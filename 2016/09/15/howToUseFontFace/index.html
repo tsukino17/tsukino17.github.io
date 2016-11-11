@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>如何花式使用字体（一） | 清澈的风</title>
+
+  
+  <meta name="author" content="windy">
+  
+
+  
+  <meta name="description" content="不管你是前端狗、设计师还是切图仔，你都绕不过搞字体这条路，虽然这条路并不是很难过，然鹅也是有一些注意事项的，请掏出小本，做好笔记：">
+  
+
+  
+  
+  <meta name="keywords" content="font,css">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="如何花式使用字体（一）"/>
+
+  <meta property="og:site_name" content="清澈的风"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="清澈的风" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">清澈的风</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>如何花式使用字体（一）</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/09/15/howToUseFontFace/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-09-14T17:47:43.000Z">
+          2016-09-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>不管你是前端狗、设计师还是切图仔，你都绕不过搞字体这条路，虽然这条路并不是很难过，然鹅也是有一些注意事项的，请掏出小本，做好笔记：</p>
+<a id="more"></a>
+<h2 id="普通地使用"><a href="#普通地使用" class="headerlink" title="普通地使用"></a>普通地使用</h2><p>人人都会的<code>font-family</code></p>
+<h3 id="普通地引入"><a href="#普通地引入" class="headerlink" title="普通地引入"></a>普通地引入</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">font-family</span>:STKaiti;&#125;<span class="comment">/*华文楷体*/</span></div></pre></td></tr></table></figure>
+<h3 id="此处有普通的注意："><a href="#此处有普通的注意：" class="headerlink" title="此处有普通的注意："></a>此处有普通的注意：</h3><p>在不同的系统中，预装的字体是不一样的，所以你在mac上引用Windows上的字体，是不会正常出现的。<br>以下是各系统的预装字体：</p>
+<ul>
+<li><p>Windows操作系统</p>
+<blockquote>
+<p>黑体：SimHei<br>宋体：SimSun<br>新宋体：NSimSun<br>仿宋：FangSong<br>楷体：KaiTi<br>仿宋GB2312：FangSongGB2312<br>楷体GB2312：KaiTiGB2312<br>微软雅黑：Microsoft YaHei （Windows 7开始提供）</p>
+</blockquote>
+</li>
+<li><p>macOS X操作系统：</p>
+<blockquote>
+<p>冬青黑体: Hiragino Sans GB （SNOW LEOPARD开始提供）<br>华文细黑：STHeiti Light （又名STXihei）<br>华文黑体：STHeiti<br>华文楷体：STKaiti<br>华文宋体：STSong<br>华文仿宋：STFangsong</p>
+</blockquote>
+</li>
+</ul>
+<p><strong><em>下面开始花式使用~撒花~(≧▽≦)/~啦啦啦</em></strong></p>
+<h2 id="花式使用"><a href="#花式使用" class="headerlink" title="花式使用"></a>花式使用</h2><h3 id="花式第一招：同时引入多种字体"><a href="#花式第一招：同时引入多种字体" class="headerlink" title="花式第一招：同时引入多种字体"></a>花式第一招：同时引入多种字体</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">font-family</span>: Georgia, <span class="string">"Times New Roman"</span>, </div><div class="line">                  <span class="string">"Microsoft YaHei"</span>, <span class="string">"微软雅黑"</span>, </div><div class="line">                   STXihei, <span class="string">"华文细黑"</span>, </div><div class="line">                   serif;&#125;</div></pre></td></tr></table></figure>
+<p>花式注意：</p>
+<blockquote>
+<ol>
+<li>font-family的规则是：<ul>
+<li>优先使用排在前面的字体。<ul>
+<li>如果找不到该种字体，或者该种字体不包括所要渲染的文字，则使用下一种字体。</li>
+<li>如果所列出的字体，都无法满足需要，则让操作系统自行决定使用哪种字体。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>根据以上规则，font-family应该优先指定英文字体，然后再指定中文字体。否则，中文字体所包含的英文字母，会取代英文字体，这往往会非常的吃藕（丑）。</li>
+<li>为了保证兼容性，中文字体的中文名称和英文名称，应该都写入font-family。比如，”微软雅黑”的英文名称是Microsoft YaHei。<br>此外，中文字体的中文名称，以及由多个单词组成的英文名称，应该放在双引号内。</li>
+</ol>
+</blockquote>
+<p>上面的那堆简洁粗暴的总结一下就是：</p>
+<blockquote>
+<p>想优先用哪个搞前面，英文字体搞前面，中英文名儿都搞上，汉字加引号，有空格加引号&lt;(￣︶￣)↗</p>
+</blockquote>
+<p><em>花式小细节：</em><br><code>serif</code>和<code>San-serif</code>分别代表<code>衬线体</code>和<code>无衬线体</code></p>
+<h3 id="花式第二招：引入自己下载到本地的字体"><a href="#花式第二招：引入自己下载到本地的字体" class="headerlink" title="花式第二招：引入自己下载到本地的字体"></a>花式第二招：引入自己下载到本地的字体</h3><p>哦嗬嗬嗬嗬~这里就要开始使用你们好多人都搞不懂的<code>@font-face</code>啦~然鹅并没有什么好怕的,跟着我做就可以了~</p>
+<p>首先先去下载一个自己喜欢的字体，参考地址<br><a href="http://font.chinaz.com/zhongwenziti.html" target="_blank" rel="external">中文字体</a><br><a href="http://www.1001freefonts.com/" target="_blank" rel="external">英文字体</a></p>
+<p>然后下载字体文件到本地，一般字体文件的格式有<code>.ttf</code> <code>.otf</code> <code>.woff</code> <code>eot</code>和<code>.svg</code>,找到它们放在你的字体文件夹就可以了</p>
+<p>例如我们的目录结构是</p>
+<blockquote>
+<p>   ├── index.html<br>   ├── css<br>   │   └── index.css<br>   ├── font<br>   │   └── windy.ttf</p>
+</blockquote>
+<p>index.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/index.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>today is windy.<span class="tag">&lt;/<span class="name">p</span>&gt;</span>	</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>index.css<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*要先引入fontface*/</span></div><div class="line">@<span class="keyword">font-face</span>&#123;</div><div class="line">	<span class="attribute">font-family</span>:windy;<span class="comment">/*windy可以自定义为任何名字*/</span></div><div class="line">	<span class="attribute">src</span>:<span class="built_in">url</span>(<span class="string">'../font/windy.ttf'</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">/*然后再用到你想用的地方*/</span></div><div class="line"><span class="selector-tag">p</span>&#123;</div><div class="line">	<span class="attribute">font-family</span>:windy;<span class="comment">/*用上刚才我们命名的windy*/</span></div><div class="line">	<span class="attribute">font-size</span>:<span class="number">16px</span>;<span class="comment">/*然后正常设置一些其他的就好啦*/</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后就阔以啦~</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/font/">font</a><a href="/tags/css/">css</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<div id="comment">
+	
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2016/09/15/howToUseFontFace/" data-title="如何花式使用字体（一）" data-url="http://yoursite.com/2016/09/15/howToUseFontFace/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"6293699079201359000"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2016 windy
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

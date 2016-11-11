@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>用nodejs去爬一下A站老司机的文章 | 清澈的风</title>
+
+  
+  <meta name="author" content="windy">
+  
+
+  
+  <meta name="description" content="自从node问世以后，就不断被JavaScript的忠实追随者拿来干一些原来只有php、Python等后端语言才能干的事情，例如写个爬虫之类的。对于前端er来说，用上一些好用的轮子，你可能十几行代码就可以写一个crawler哦~
+爬虫的思路十分简单:
+
+
+按照一定的规律发送 HTTP 请求获得页面 HTML 源码（必要时需要加上一定的 HTTP 头信息，比如 cookie 或 referer 之类）
+利用正则匹配或第三方模块解析 HTML 代码，提取有效数据
+将数据持久化到数据库中
+
+
+当然爬虫的写法千千万，下面只提供吃瓜群众都能看懂的版本~
+假定你已经有了一定的nodeJS基础，如果没有请移步围观=&amp;gt;LV触手系列：前端之魂，触碰后端的手——Node.js学习之路（一）">
+  
+
+  
+  
+  <meta name="keywords" content="nodejs,爬虫">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="用nodejs去爬一下A站老司机的文章"/>
+
+  <meta property="og:site_name" content="清澈的风"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="清澈的风" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">清澈的风</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>用nodejs去爬一下A站老司机的文章</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/10/15/nodejs-crawler/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-10-15T09:24:41.000Z">
+          2016-10-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>自从node问世以后，就不断被JavaScript的忠实追随者拿来干一些原来只有php、Python等后端语言才能干的事情，例如写个爬虫之类的。对于前端er来说，用上一些好用的轮子，你可能十几行代码就可以写一个crawler哦~</p>
+<p>爬虫的思路十分简单:</p>
+<blockquote>
+<ol>
+<li>按照一定的规律发送 HTTP 请求获得页面 HTML 源码（必要时需要加上一定的 HTTP 头信息，比如 cookie 或 referer 之类）</li>
+<li>利用正则匹配或第三方模块解析 HTML 代码，提取有效数据</li>
+<li>将数据持久化到数据库中</li>
+</ol>
+</blockquote>
+<p>当然爬虫的写法千千万，下面只提供吃瓜群众都能看懂的版本~</p>
+<p><em>假定你已经有了一定的nodeJS基础，如果没有请移步围观=&gt;LV触手系列：<a href="http://phoeshow.github.io/2016/06/12/%E5%89%8D%E7%AB%AF%E4%B9%8B%E9%AD%82%EF%BC%8C%E8%A7%A6%E7%A2%B0%E5%90%8E%E7%AB%AF%E7%9A%84%E6%89%8B%E2%80%94%E2%80%94Node-js%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="external">前端之魂，触碰后端的手——Node.js学习之路（一）</a></em><br><a id="more"></a></p>
+<hr>
+<h2 id="＊准备阶段＊"><a href="#＊准备阶段＊" class="headerlink" title="＊准备阶段＊"></a>＊准备阶段＊</h2><h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><p><em>(npm:趁还没被yarn干掉再续一秒）</em></p>
+<p>首先我们需要通过npm安装两个模块<code>reuqest</code>和<code>cheerio</code>来帮助我们更方便地<code>请求</code>和 <code>解析</code>页面</p>
+<p>终端cd到你的文件目录里，先装上，一会儿我再各自讲它们</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$npm install request --save</div><div class="line">$npm install cheerio --save</div></pre></td></tr></table></figure>
+<h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><p>装完你可以看到你文件夹里的<code>package.json</code>里已经多了两个依赖项<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"crawler"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"0.0.1"</span>,</div><div class="line">  <span class="attr">"dependencies"</span>: &#123;</div><div class="line">    <span class="attr">"request"</span>: <span class="string">"^2.75.0"</span>,</div><div class="line">    <span class="attr">"cheerio"</span>: <span class="string">"^0.22.0"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="crawler-js"><a href="#crawler-js" class="headerlink" title="crawler.js"></a>crawler.js</h3><p>假设你的爬虫程序主文件名叫<code>crawler.js</code>,我们需要在这个文件里引入<code>request</code>和<code>cheerio</code>这两个模块<br>js代码为<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">"request"</span>);</div><div class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">"cheerio"</span>);</div></pre></td></tr></table></figure></p>
+<p>准备阶段完成后，让我们开始沉迷于学习阶段= =</p>
+<hr>
+<h2 id="＊学习阶段＊"><a href="#＊学习阶段＊" class="headerlink" title="＊学习阶段＊"></a>＊学习阶段＊</h2><h3 id="REQUEST"><a href="#REQUEST" class="headerlink" title="REQUEST"></a>REQUEST</h3><p><a href="https://github.com/request/request" target="_blank" rel="external">request</a>是个非常好用的针对HTTP请求的模块，简言之是对 <code>http.request</code>更高级的封装,口号是——“Simplified HTTP client”</p>
+<p>request 这个模块可以帮你下载资料。使用方式：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">request(&#123;</div><div class="line">   <span class="attr">url</span>: <span class="string">"你想抓的网址"</span>,</div><div class="line">   <span class="attr">method</span>: <span class="string">"GET"</span></div><div class="line"> &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">e,r,b</span>) </span>&#123; <span class="comment">/* Callback 函式*/</span></div><div class="line">   <span class="comment">/* e: 错误代码*/</span></div><div class="line">   <span class="comment">/* b: 传回的资料内容*/</span></div><div class="line"> &#125;);</div></pre></td></tr></table></figure></p>
+<p>随便来个例子，假设你觉得你自己真是沉迷于学习无法自拔，是我的迷妹/痴汉一只，你想要随时监控我博客的内容，那你就这样写</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">request(&#123;</div><div class="line">   <span class="attr">url</span>: <span class="string">"http://goodluckforever.github.io"</span>,</div><div class="line">   <span class="attr">method</span>: <span class="string">"GET"</span></div><div class="line"> &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">e,r,b</span>) </span>&#123;</div><div class="line">   <span class="keyword">if</span>(!e) <span class="built_in">console</span>.log(b);</div><div class="line"> &#125;);</div></pre></td></tr></table></figure>
+<p>不过我建议你们转去搞LV的( ͡° ͜ʖ ͡°)=&gt;<a href="http://phoeshow.github.io" target="_blank" rel="external">群疯之下</a></p>
+<h3 id="CHEERIO"><a href="#CHEERIO" class="headerlink" title="CHEERIO"></a>CHEERIO</h3><p><a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="external">cheerio</a>模块可以在服务器端像使用Jquery的方式一样操作Dom结构，许多用法和jquery 的语法基本相同，为服务器特别定制的，快速、灵活、实施的jQuery核心实现。<br>简言之，是服务器端的鸡块瑞(◕ܫ◕)~</p>
+<p>Cheerio 几乎能够解析任何的 HTML 和 XML document，灵活好用，灰常厉害<br>只需这么用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//load里面是要加载的html字符串</span></div><div class="line"><span class="keyword">var</span> $ = cheerio.load(<span class="string">'&lt;h2 class="title"&gt;Hello world&lt;/h2&gt;'</span>)</div><div class="line"></div><div class="line"><span class="comment">//text()方法可以将字符串写入标签</span></div><div class="line">$(<span class="string">'h2.title'</span>).text(<span class="string">'Hello there!'</span>)</div><div class="line"><span class="comment">//添加类也跟鸡块瑞一样</span></div><div class="line">$(<span class="string">'h2'</span>).addClass(<span class="string">'welcome'</span>)</div><div class="line"></div><div class="line"><span class="comment">//最终就会输出想要的啦</span></div><div class="line">$.html()</div><div class="line"><span class="comment">//=&gt; &lt;h2 class="title welcome"&gt;Hello there!&lt;/h2&gt;</span></div></pre></td></tr></table></figure>
+<p>基础知识学习完毕，让我们一起投入到火热的社会主义建设中去~</p>
+<hr>
+<h2 id="＊建设阶段＊"><a href="#＊建设阶段＊" class="headerlink" title="＊建设阶段＊"></a>＊建设阶段＊</h2><p>先把request搞上去，明确要爬的页面，我们要爬的是<a href="http://www.acfun.tv/v/list110/index.htm" target="_blank" rel="external">A站的文章区</a>(我不想搞B站，不想被封号TAT)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">request(&#123;</div><div class="line">    <span class="comment">//老司机地址</span></div><div class="line">    url: <span class="string">"http://www.acfun.tv/v/list110/index.htm"</span>,</div><div class="line">    <span class="comment">//请求方式</span></div><div class="line">    method: <span class="string">"GET"</span></div><div class="line">  &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">e,r,b</span>) </span>&#123; <span class="comment">//回调函数</span></div><div class="line">    <span class="comment">//如果错误或没有资料就返回</span></div><div class="line">    <span class="keyword">if</span>(e || !b) &#123; <span class="keyword">return</span>; &#125;</div><div class="line">    <span class="comment">//如果正确我们就拍拍手</span></div><div class="line">    <span class="comment">//……</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>我们当然不能拍拍手，我们要用<code>cheerio</code>去解析我们刚请求成功的页面</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">,<span class="function"><span class="keyword">function</span>(<span class="params">e,r,b</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(e || !b) &#123; <span class="keyword">return</span>; &#125;</div><div class="line">    <span class="comment">/*正确的情况*/</span></div><div class="line">    <span class="keyword">var</span> $ = cheerio.load(b);<span class="comment">//b就是我们请求成功的页面</span></div><div class="line">    <span class="comment">//搞个数组用于存放爬下来的内容</span></div><div class="line">    <span class="keyword">var</span> result = [];</div><div class="line">    <span class="comment">//选择器里就是你从控制台里看到的标题的源码</span></div><div class="line">    <span class="keyword">var</span> titles = $(<span class="string">".mainer .item a.title"</span>);</div><div class="line">    <span class="comment">//遍历并添加在数组里</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;titles.length;i++) &#123;</div><div class="line">      result.push($(titles[i]).text());</div><div class="line">  &#125;</div><div class="line">&#125;）</div></pre></td></tr></table></figure>
+<p>最后爬下来的结果我们把它放在<code>result.json</code>文件里</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//首先要引入fs模块，fs是node内置的模块，提供本地文件的读写能力</span></div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div></pre></td></tr></table></figure>
+<p>最后把这句话放在request方法里<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fs.writeFileSync(<span class="string">"result.json"</span>, <span class="built_in">JSON</span>.stringify(result));</div></pre></td></tr></table></figure></p>
+<p>最终你的<code>crawler.js</code>看起来是这样<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">"request"</span>);</div><div class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">"cheerio"</span>);</div><div class="line">request(&#123;</div><div class="line">    <span class="attr">url</span>: <span class="string">"http://www.acfun.tv/v/list110/index.htm"</span>,</div><div class="line">    <span class="attr">method</span>: <span class="string">"GET"</span></div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">e,r,b</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(e || !b) &#123; <span class="keyword">return</span>; &#125;</div><div class="line">    <span class="keyword">var</span> $ = cheerio.load(b);</div><div class="line">    <span class="keyword">var</span> result = [];</div><div class="line">    <span class="keyword">var</span> titles = $(<span class="string">".mainer .item a.title"</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;titles.length;i++) &#123;</div><div class="line">        result.push($(titles[i]).text());</div><div class="line">    &#125;</div><div class="line">    fs.writeFileSync(<span class="string">"result.json"</span>, <span class="built_in">JSON</span>.stringify(result));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>啊~麻麻~我用16行代码就写了个爬虫~╰(<em>°▽°</em>)╯<br>慢着，我们先来试验下是否能成功</p>
+<hr>
+<h2 id="＊实验阶段＊"><a href="#＊实验阶段＊" class="headerlink" title="＊实验阶段＊"></a>＊实验阶段＊</h2><p>cd 到你的目录，敲下激动人心的如下代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node crawler</div></pre></td></tr></table></figure></p>
+<p>然后观察你的文件夹里是否多了个<code>result.json</code>呢，它看起来应该是如下这样充满了大新闻</p>
+<p>result.json<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  <span class="string">"高校技术宅黑了全教学楼的电脑给妹子表白"</span>,</div><div class="line">  <span class="string">"【数据检查】ACFUN音乐投票新趋周榜.2016年第37期（总第40期）"</span>,</div><div class="line">  <span class="string">"AcFun三文鱼摄影群作品汇报 第四期"</span>,</div><div class="line">  <span class="string">"【设计文章】等角视轴小卖部过程拆解"</span>,</div><div class="line">  <span class="string">"五张动图，帮你了解三星Note7爆炸所有可能原因"</span>,</div><div class="line">  <span class="string">"三星Note7炸机机主：我觉得我是个傻子"</span>,</div><div class="line">  <span class="string">"脱欧了，涨价了，超市里英国人的“老干妈”没货了...这下英国人民怒了"</span>,</div><div class="line">  <span class="string">"越南网友选出了他们心中的亚洲最美女星"</span>,</div><div class="line">  <span class="string">"金庸武侠作品到了日本后的封面"</span>,</div><div class="line">  <span class="string">"麦当劳的各地特色菜 网友：越看越没食欲"</span>,</div><div class="line">  <span class="string">"国行苹果iPhone7 Plus部分现货：亮黑色仍全线缺货"</span>,</div><div class="line">  <span class="string">"71岁大爷痴迷CS：感觉病都好多了"</span></div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>恭嘿累爬虫成功~想要爬到更深入的信息，就自己去看API吧~爬到什么不得了的东西的话，记得分享给我萌哦~(づ￣3￣)づ╭❤～</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/nodejs/">nodejs</a><a href="/tags/爬虫/">爬虫</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<div id="comment">
+	
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2016/10/15/nodejs-crawler/" data-title="用nodejs去爬一下A站老司机的文章" data-url="http://yoursite.com/2016/10/15/nodejs-crawler/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"6293699079201359000"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2016 windy
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

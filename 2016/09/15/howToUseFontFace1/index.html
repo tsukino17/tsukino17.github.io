@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>如何花式使用字体（二） | 清澈的风</title>
+
+  
+  <meta name="author" content="windy">
+  
+
+  
+  <meta name="description" content="吃瓜群众一：我想搞百度手机版的图标，可是审查元素都找不到在哪里诶……吃瓜群众二：好多其他站的icon也是，并没有发现图片文件在哪里……吃瓜群众三：你们啊，too young！
+以下是三号吃瓜群众的独白，与本作者无关">
+  
+
+  
+  
+  <meta name="keywords" content="font,css">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="如何花式使用字体（二）"/>
+
+  <meta property="og:site_name" content="清澈的风"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="清澈的风" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">清澈的风</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>如何花式使用字体（二）</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/09/15/howToUseFontFace1/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-09-15T02:19:07.000Z">
+          2016-09-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>吃瓜群众一：我想搞百度手机版的图标，可是审查元素都找不到在哪里诶……<br>吃瓜群众二：好多其他站的icon也是，并没有发现图片文件在哪里……<br>吃瓜群众三：你们啊，too young！</p>
+<p><em>以下是三号吃瓜群众的独白，与本作者无关</em></p>
+<a id="more"></a>
+<p>吃瓜群众三：你们知道<a href="http://iconfont.cn/" target="_blank" rel="external">iconfont</a>这个东西么？<br>众吃瓜群众：不知……<br>吃瓜群众三：不知道还不赶紧去看</p>
+<p>（于是众人赶紧去到iconfont官网）</p>
+<p>iconfont.cn是马云爸爸家的UX部门推出的矢量图标管理网站，也是国内首家推广Webfont形式图标的平台。<br><a href="http://iconfont.cn/collections" target="_blank" rel="external">官方字体库界面</a>长这样</p>
+<p><img src="/images/iconfont.png" alt=""><br>另外还有很多其他公开库可以使用<br>如果我们想要找某一类型的字体图标，只要在搜索框输入关键词就可以啦<br><img src="/images/iconfont1.png" alt=""><br>然后就粗现了很多西瓜<br><img src="/images/iconfont2.png" alt=""><br>此时，如果只需要图像格式的话，直接下载选择格式就好了<br><img src="/images/iconfont3.png" alt=""><br>但是，如果我们希望它是以字体图标写进html的话，就要先加入购物车里<br><img src="/images/iconfont4.png" alt=""><br>然后下载到本地<br><img src="/images/iconfont5.png" alt=""><br>会有一个文件夹包含<code>demo.html</code> <code>demo.css</code> <code>iconfont.css</code>和四个字体文件<br>打开<code>demo.html</code>会有已经写好的示例~<br>总的来说有两种方式可以使Html页面引入iconfont</p>
+<hr>
+<p><em>第一种：</em><br>css</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">font-face</span> &#123;</div><div class="line">    <span class="attribute">font-family</span>: <span class="string">'iconfont'</span>;</div><div class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'iconfont.eot'</span>);<span class="comment">/*其他兼容自行添加*/</span></div><div class="line">&#125;</div><div class="line"><span class="selector-class">.iconfont</span>&#123;</div><div class="line">    <span class="attribute">font-family</span>:<span class="string">"iconfont"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"iconfont"</span>&gt;</span>&amp;#xe7a3;<span class="tag">&lt;/<span class="name">i</span>&gt;</span></div></pre></td></tr></table></figure>
+<hr>
+<p><em>第二种：</em><br>css</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">font-face</span> &#123;</div><div class="line">    <span class="attribute">font-family</span>: <span class="string">'iconfont'</span>;</div><div class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'iconfont.eot'</span>);<span class="comment">/*其他兼容自行添加*/</span></div><div class="line">&#125;</div><div class="line"><span class="selector-class">.iconfont</span>&#123;</div><div class="line">    <span class="attribute">font-family</span>:<span class="string">"iconfont"</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.icon-xigua</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">content</span>: <span class="string">"\e7a3"</span>; &#125;</div></pre></td></tr></table></figure>
+<p>html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"icon-xigua iconfont"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>蓝后，你的页面就阔以出现西瓜啦，再根据需求添加样式吧~</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/font/">font</a><a href="/tags/css/">css</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<div id="comment">
+	
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2016/09/15/howToUseFontFace1/" data-title="如何花式使用字体（二）" data-url="http://yoursite.com/2016/09/15/howToUseFontFace1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"6293699079201359000"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2016 windy
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>如何花式使用字体（四） | 清澈的风</title>
+
+  
+  <meta name="author" content="windy">
+  
+
+  
+  <meta name="description" content="话说这个主题真是没完没了啊，靠着写字体撑起一片天……好了，主要是因为web技术发展的迅速，我们又可以用上多色字体了，多色字体顾名思义，区别于以往普通的单色icon，拥有更加生动丰富的色彩，同时又更方便控制，很是值得尝尝鲜的~">
+  
+
+  
+  
+  <meta name="keywords" content="font,css">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="如何花式使用字体（四）"/>
+
+  <meta property="og:site_name" content="清澈的风"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="清澈的风" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">清澈的风</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>如何花式使用字体（四）</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/11/10/howToUseFontFace3/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-11-10T08:16:09.000Z">
+          2016-11-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>话说这个主题真是没完没了啊，靠着写字体撑起一片天……好了，主要是因为web技术发展的迅速，我们又可以用上<code>多色字体</code>了，多色字体顾名思义，区别于以往普通的单色icon，拥有更加生动丰富的色彩，同时又更方便控制，很是值得尝尝鲜的~</p>
+<a id="more"></a>
+<p>首先打开马云爸爸家的<a href="http://www.iconfont.cn/plus/collections/index?type=2" target="_blank" rel="external">iconfont之多色字体库</a>,wow，果然有钱最能促进高科技了<br><img src="/images/iconfont7.png" alt=""><br>OK,那么其实使用起来也并不是很困难，如果你已经看过这个系列的第二篇:<a href="https://goodluckforever.github.io/2016/09/15/howToUseFontFace1/" target="_blank" rel="external">如何花式使用字体（二）</a>的话，流程基本是差不多的</p>
+<p>作为一个吃货，我们选一个食物的多色字体库<br><img src="/images/iconfont8.png" alt=""><br>然后让我们唱起来：I have a pen,I have an apple……<br>把Apple加到购物车，点击页面右上角的购物车，下载代码<br><img src="/images/iconfont9.png" alt=""><br>然后你会得到一个含有示例的文件夹<br><code>多色字体</code>主要用了<code>symbol引用</code>这种全新的引用方式，所以我们找到<code>demo_symbol.html</code>文件，打开可以得到一个<code>苹果的多色字体</code>引用示例</p>
+<p>具体使用<code>symbol引用</code>产生<code>多色字体</code>方法如下：</p>
+<hr>
+<h3 id="Step1-引入js"><a href="#Step1-引入js" class="headerlink" title="Step1: 引入js"></a>Step1: 引入js</h3><p>在<code>&lt;head&gt;</code>里引入文件夹里的<code>iconfont.js</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"iconfont.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><em>※注意路径</em></p>
+<h3 id="Step2-引入通用CSS"><a href="#Step2-引入通用CSS" class="headerlink" title="Step2: 引入通用CSS"></a>Step2: 引入通用CSS</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>多色字体吃瓜教程<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"iconfont.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-class">.icon</span> &#123;</div><div class="line">          <span class="attribute">width</span>: <span class="number">1em</span>; <span class="attribute">height</span>: <span class="number">1em</span>;<span class="comment">/* 改变图标大小*/</span></div><div class="line">          <span class="attribute">vertical-align</span>: -<span class="number">0.15em</span>;<span class="comment">/* 垂直对齐方式*/</span></div><div class="line">          <span class="attribute">fill</span>: currentColor;<span class="comment">/*图标颜色*/</span></div><div class="line">          <span class="attribute">overflow</span>: hidden;<span class="comment">/*解决溢出部分*/</span></div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>tips:</p>
+<blockquote>
+<ul>
+<li>width,height单位不限于em,可以是px,rem等</li>
+<li>vertical-align可以是middle,baseline或数值等<br>默认图标和文字相邻时，图标比baseline还要低(0.15em)x行高x100% </li>
+<li>由于图标是用svg绘制，默认采用自带的配色，如需更改去<code>iconfont.js</code>里修改path的fill即可</li>
+<li>path 和 stroke 溢出 viewBox 部分在 IE 下会显示，normalize.css 中也包含此句 </li>
+</ul>
+</blockquote>
+<h3 id="Step3-写入HTML"><a href="#Step3-写入HTML" class="headerlink" title="Step3: 写入HTML"></a>Step3: 写入HTML</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">class</span>=<span class="string">"icon"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">use</span> <span class="attr">xlink:href</span>=<span class="string">"#icon-Apple"</span>&gt;</span><span class="tag">&lt;/<span class="name">use</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><em>※注意类名一致</em><br><em>※为了避免屏幕识读设备抓取非故意的和可能产生混淆的输出内容（尤其是当图标纯粹作为装饰用途时），我们为这些图标设置了aria-hidden=”true”，简言之，当你用一些读屏软件时，不会听到I have an apple icon这种怪东西</em></p>
+<p>经过以上三步，一个引领时代潮流的<code>多色图标</code><br><img src="/images/iconfont12.png" alt=""></p>
+<p>就会展现在你的页面上啦~快点去跟小伙伴们炫（zhuang）耀(thirteen)吧~~(≧▽≦)/~</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/font/">font</a><a href="/tags/css/">css</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<div id="comment">
+	
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2016/11/10/howToUseFontFace3/" data-title="如何花式使用字体（四）" data-url="http://yoursite.com/2016/11/10/howToUseFontFace3/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"6293699079201359000"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2016 windy
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
