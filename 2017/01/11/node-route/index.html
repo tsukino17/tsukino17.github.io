@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>node笔记之express路由 | 清澈的风</title>
+
+  
+  <meta name="author" content="windy">
+  
+
+  
+  <meta name="description" content="today is windy">
+  
+
+  
+  
+  <meta name="keywords" content="node,webserver">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="node笔记之express路由"/>
+
+  <meta property="og:site_name" content="清澈的风"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="清澈的风" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">清澈的风</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>node笔记之express路由</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/01/11/node-route/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-01-11T06:22:31.000Z">
+          2017-01-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="一、web服务器简介"><a href="#一、web服务器简介" class="headerlink" title="一、web服务器简介"></a>一、web服务器简介</h2><h3 id="1-web服务器的功能"><a href="#1-web服务器的功能" class="headerlink" title="1.web服务器的功能"></a>1.web服务器的功能</h3><blockquote>
+<ul>
+<li>接受http请求(GET、POST、DELETE、PUT、PATCH) </li>
+<li>处理http请求(自己处理或交给其他程序处理)</li>
+<li>做出响应(返回页面、文件、各类数据)</li>
+</ul>
+</blockquote>
+<h3 id="2-常见web服务器架构"><a href="#2-常见web服务器架构" class="headerlink" title="2.常见web服务器架构"></a>2.常见web服务器架构</h3><blockquote>
+<ul>
+<li>Nginx/Apache:负责接收HTTP请求,确定谁来处理请求,并返回请求的结果</li>
+<li>php-fhm/php模块:处理分配给自己的请求,并将处理结果返回给分配者 </li>
+</ul>
+</blockquote>
+<h3 id="3-常见请求种类"><a href="#3-常见请求种类" class="headerlink" title="3.常见请求种类:"></a>3.常见请求种类:</h3><blockquote>
+<ul>
+<li>请求文件:包括静态文件(网页、图片、JS、CSS文件),以及由程序处理得到的文件</li>
+<li>完成特定的操作:如登陆、获取特定数据等</li>
+</ul>
+</blockquote>
+<h3 id="4-node的web服务器"><a href="#4-node的web服务器" class="headerlink" title="4.node的web服务器"></a>4.node的web服务器</h3><blockquote>
+<ul>
+<li>不依赖其他特定的web服务器软件(如Apache、Nginx、IIS)</li>
+<li>直接对请求进行逻辑处理</li>
+<li>可以对web服务器各种配置(类似于apache要配置.ini文件)</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h2 id="二、使用http模块创建web服务器"><a href="#二、使用http模块创建web服务器" class="headerlink" title="二、使用http模块创建web服务器"></a>二、使用http模块创建web服务器</h2><p><code>http</code>模块是nodejs的核心（原生）模块<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//引入http模块</span></div><div class="line"><span class="keyword">var</span> http=<span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"><span class="comment">//创建服务器</span></div><div class="line"><span class="keyword">var</span> webServer=http.creatServer(fuction(req,res)&#123;</div><div class="line">	res.end(<span class="string">'hello'</span>);</div><div class="line">&#125;);</div><div class="line"><span class="comment">//设置服务器监听端口</span></div><div class="line">webServer.listen(<span class="number">6000</span>);</div></pre></td></tr></table></figure></p>
+<h2 id="三、使用express创建web服务器"><a href="#三、使用express创建web服务器" class="headerlink" title="三、使用express创建web服务器"></a>三、使用express创建web服务器</h2><h3 id="1-创建服务器"><a href="#1-创建服务器" class="headerlink" title="1.创建服务器"></a>1.创建服务器</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//引入express模块</span></div><div class="line"><span class="keyword">var</span> express=<span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="comment">//创建express实例</span></div><div class="line"><span class="keyword">var</span> app=express();</div><div class="line"><span class="comment">//设置基础路由</span></div><div class="line">app.get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">req,res</span>) </span>&#123;</div><div class="line">    res.end(<span class="string">'hello'</span>);</div><div class="line">&#125;);</div><div class="line"><span class="comment">//监听端口</span></div><div class="line">app.listen(<span class="number">3000</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'running at 3000'</span>)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="2-静态文件服务器"><a href="#2-静态文件服务器" class="headerlink" title="2.静态文件服务器"></a>2.静态文件服务器</h3><p>通过<code>Express</code>唯一内置的<strong>中间件</strong><code>express.static</code>可以方便地托管静态文件，例如图片、CSS、JavaScript 文件等。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.use(express.static(<span class="string">'./public'</span>));</div><div class="line"><span class="comment">//表明基于public路径</span></div><div class="line"><span class="comment">//这样访问public目录下的index.html输入Url的时候就是http://localhost:3000/index.html</span></div></pre></td></tr></table></figure></p>
+<h3 id="3-express里路由实现的三种方法"><a href="#3-express里路由实现的三种方法" class="headerlink" title="3.express里路由实现的三种方法"></a>3.express里路由实现的三种方法</h3><p><strong>路由</strong>:<br><code>app.METHOD(PATH, HANDLER)</code></p>
+<blockquote>
+<ul>
+<li>将不同的请求,分配给相应的处理函数</li>
+<li>区分方式:根据路径或请求方法</li>
+</ul>
+</blockquote>
+<h4 id="path方法（路由路径）"><a href="#path方法（路由路径）" class="headerlink" title="path方法（路由路径）"></a>path方法（路由路径）</h4><p>要点是app.+v. 例如<code>app.get</code>,<code>app.post</code>,<code>app.put</code>,<code>app.delete</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//以主页上的 Hello World! 进行响应：</span></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.send(<span class="string">'Hello World!'</span>);</div><div class="line">&#125;);</div><div class="line"><span class="comment">//对 /user 路由的 PUT 请求进行响应：</span></div><div class="line">app.put(<span class="string">'/user'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.send(<span class="string">'Got a PUT request at /user'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4 id="Router方法（express-Router）"><a href="#Router方法（express-Router）" class="headerlink" title="Router方法（express.Router）"></a>Router方法（express.Router）</h4><p>使用 express.Router 类来创建可安装的模块化路由处理程序。Router 实例是完整的中间件和路由系统；因此，常常将其称为“微型应用程序”。</p>
+<p><em>一般用于这种情况,都是基于某一个路由下</em><br><a href="http://example.com/post/add" target="_blank" rel="external">http://example.com/post/add</a><br><a href="http://example.com/post/list" target="_blank" rel="external">http://example.com/post/list</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Router=express.Router();</div><div class="line"><span class="comment">//例如都基于post这个路由</span></div><div class="line">Router.get(<span class="string">'/add'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</div><div class="line">    res.end(<span class="string">'Router /add'</span>);</div><div class="line">&#125;);</div><div class="line">Router.get(<span class="string">'/list'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</div><div class="line">    res.end(<span class="string">'Router /list'</span>);</div><div class="line">&#125;);</div><div class="line"><span class="comment">//添加基础路径</span></div><div class="line">app.use(<span class="string">'/post'</span>,Router);</div></pre></td></tr></table></figure></p>
+<h4 id="route方法（app-route）"><a href="#route方法（app-route）" class="headerlink" title="route方法（app.route）"></a>route方法（app.route）</h4><p>用于同一路由下的不同处理，可用作链式路由<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//例如article下不同处理</span></div><div class="line"><span class="comment">//发起post或get请求</span></div><div class="line">app.route(<span class="string">'/article'</span>)</div><div class="line">    .get(<span class="function"><span class="keyword">function</span> (<span class="params">req,res</span>) </span>&#123;</div><div class="line">        res.end(<span class="string">'route /article get'</span>);</div><div class="line">    &#125;)</div><div class="line">    .post(<span class="function"><span class="keyword">function</span> (<span class="params">req,res</span>) </span>&#123;</div><div class="line">        res.end(<span class="string">'route /article post'</span>);</div><div class="line">    &#125;);</div></pre></td></tr></table></figure></p>
+<h4 id="路由参数"><a href="#路由参数" class="headerlink" title="路由参数"></a>路由参数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//http://example.com/news/123</span></div><div class="line"><span class="comment">//123就是路由参数</span></div><div class="line"><span class="comment">//express里借助param方法</span></div><div class="line"></div><div class="line">app.param(<span class="string">'newsId'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">req,res,next,newsId</span>) </span>&#123;</div><div class="line">    <span class="comment">//把newsId直接存储在请求对象里</span></div><div class="line">    req.newsId=newsId;</div><div class="line">    next();</div><div class="line">&#125;);</div><div class="line">app.get(<span class="string">'/news/:newsId'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">req,res</span>) </span>&#123;</div><div class="line">    res.end(<span class="string">'newsId:'</span>+req.newsId)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'running at 3000'</span>)</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//localhost://3000/news/123</span></div></pre></td></tr></table></figure>
+<hr>
+<p><em>links：<a href="http://www.jikexueyuan.com/course/1722_2.html?ss=1" target="_blank" rel="external">使用 Express 创建 Web 服务器</a> &amp; <a href="http://expressjs.com/zh-cn/guide/routing.html" target="_blank" rel="external">express官方文档</a></em></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/node-webserver/">node,webserver</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<div id="comment">
+	
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/01/11/node-route/" data-title="node笔记之express路由" data-url="http://yoursite.com/2017/01/11/node-route/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"6293699079201359000"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 windy
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
