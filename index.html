@@ -61,6 +61,82 @@
 
   
     
+    <h3 class="article-title"><a href="/2017/02/14/vue-2/"><span>vue2.0笔记(二)——事件</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/02/14/vue-2/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-02-14T03:03:33.000Z">
+          2017-02-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h3 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a><code>v-on</code></h3><p><code>v-on</code>用于事件绑定，<code>v-on:</code>冒号后面可以加任意的原生js事件如<code>click</code>/<code>mouseover</code>/<code>dblclick</code>等,<code>v-on:</code>的简写是<code>@</code>,如<code>v-on:click=&#39;show()&#39;</code>可以简写为<code>@click=&#39;show()&#39;</code><br>除了方法名外，也可以直接写脚本语句如<code>@click=&quot;alert(1)&quot;</code></p>
+<p><strong>点击添加列表条目</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"item in arr"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"add()"</span>&gt;</span>add One<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>点击时的<code>add</code>方法必须写在<code>methods</code>里<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line">            <span class="attr">el</span>: <span class="string">"#app"</span>,</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">arr</span>: [<span class="string">'apple'</span>, <span class="string">'pear'</span>, <span class="string">'grape'</span>]</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">methods</span>: &#123;</div><div class="line">                <span class="attr">add</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="keyword">this</span>.arr.push(<span class="string">'strawberry'</span>)</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;)</div></pre></td></tr></table></figure></p>
+<p>除了鼠标事件之外，也可用于键盘事件如<code>keydown</code>/<code>keyup</code>,在键盘事件的基础上可以添加<code>keyCode</code>来绑定确定的键盘事件,常用的如<code>up</code>,<code>down</code>,<code>left</code>,<code>right</code>,<code>enter</code>,<code>delete</code> </p>
+<p><strong>回车添加条目，delete键删除条目</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> @<span class="attr">keydown.enter</span>=<span class="string">"add()"</span> @<span class="attr">keydown.delete</span>=<span class="string">"minus()"</span>&gt;</span>add One<span class="tag">&lt;/<span class="name">input</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">methods: &#123;</div><div class="line">           <span class="attr">add</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                   <span class="keyword">this</span>.arr.push(<span class="string">'strawberry'</span>)</div><div class="line">               &#125;,</div><div class="line">           <span class="attr">minus</span>:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                   <span class="keyword">this</span>.arr.pop();</div><div class="line">               &#125;</div><div class="line">           &#125;</div></pre></td></tr></table></figure>
+<p><strong>确定键入的keyCode</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> @<span class="attr">keydown</span>=<span class="string">"showCode($event)"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>你键入的keyCode 是&#123;&#123;myKeyCode&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">data: &#123;<span class="attr">myKeyCode</span>:<span class="string">''</span>&#125;,</div><div class="line"><span class="attr">methods</span>:&#123;</div><div class="line">    <span class="attr">showCode</span>:<span class="function"><span class="keyword">function</span> (<span class="params">$event</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.myKeyCode=$event.keyCode;</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p><em><code>$event</code>可以写成<code>event</code>,但写<code>e</code>就会报错</em></p>
+<p><strong>阻止事件冒泡</strong><br>用修饰符<code>.stop</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span> @<span class="attr">click</span>=<span class="string">"show($event)"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> @<span class="attr">click.stop</span>=<span class="string">"show($event)"</span>&gt;</span>click<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">methods:&#123;</div><div class="line">    <span class="attr">show</span>:<span class="function"><span class="keyword">function</span> (<span class="params">$event</span>) </span>&#123;</div><div class="line">        alert($event.clientY);</div><div class="line">        <span class="comment">//$event.cancelBubble=true;</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>也可以使用<code>$event.cancelBubble=true;</code>来阻止事件冒泡</p>
+<p><strong>阻止默认行为</strong><br>用修饰符<code>.prevent</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> @<span class="attr">contextmenu.prevent</span>=<span class="string">"show($event)"</span>&gt;</span>右键获取目前clientX<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">show:<span class="function"><span class="keyword">function</span> (<span class="params">$event</span>) </span>&#123;</div><div class="line">        alert($event.clientX);</div><div class="line">        <span class="comment">//$event.preventDefault();</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>也可以使用<code>$event.preventDefault()</code>来阻止如出现右键菜单等这样的默认事件</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a><a href="/tags/v-on/">v-on</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="2017/02/14/vue-2/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2017/02/13/vue-1/"><span>vue2.0笔记(一)</span></a></h3>
     
   
@@ -85,18 +161,6 @@
 <p><code>el</code>是vue的固定写法，代表<code>element</code>，<code>el:</code>后面不仅可以跟id,也可以跟class或tagName,即<code>el:&quot;#app&quot;</code>,<code>el:&quot;.main&quot;</code>,<code>el:&quot;ul&quot;</code>都是合理的，<em>但写在<code>body</code>上不太好使目前，建议还是用一个<code>div</code>包裹</em></p>
 <p> <code>data</code>是必不可少的环节，当你发觉数据出不来时，可以审查是否在data定义过，或者根据vue的自带报错查找bug</p>
 <p> <code>this</code>是指你创建的这个实例<code>new Vue</code>,如果你<code>var vm=new Vue({})</code>,那么<code>this</code>就是你命名的<code>vm</code></p>
-<h2 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h2><hr>
-<h3 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a><code>v-model</code></h3><p><code>v-model</code>用于一般表单元素,可实现双向数据绑定<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"msg"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">data: &#123;<span class="attr">msg</span>:<span class="string">'default text'</span>&#125;</div></pre></td></tr></table></figure>
-<h3 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a><code>v-for</code></h3><p><code>v-for</code>常用于循环，循环时遵循的顺序是<code>value,key,index</code><br>用于json时：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"(key,value,index) in json"</span>&gt;</span>&#123;&#123;index&#125;&#125;-&#123;&#123;key&#125;&#125;:&#123;&#123;value&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">data: &#123;</div><div class="line">	<span class="attr">json</span>: &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'john'</span>,</div><div class="line">                <span class="attr">age</span>: <span class="number">18</span></div><div class="line">            &#125;</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
-<p>用于对象组成的数组时注意循环的是条目，如需输出值需要写出具体对应的属性<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"(item,index) in arr"</span>&gt;</span>&#123;&#123;index&#125;&#125;:&#123;&#123;item.name&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">data: &#123;</div><div class="line">	<span class="attr">arr</span>: [</div><div class="line">		&#123;<span class="attr">name</span>: <span class="string">'john'</span>&#125;,</div><div class="line">		&#123;<span class="attr">name</span>: <span class="string">'sherlock'</span>&#125;</div><div class="line">		]</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
-<h3 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a><code>v-on</code></h3><p><code>v-on</code>用于事件绑定，<code>v-on:</code>冒号后面可以加任意的原生js事件如<code>click</code>/<code>mouseover</code>/<code>dblclick</code>等,<code>v-on:</code>的简写是<code>@</code>,如<code>v-on:click=&#39;show()&#39;</code>可以简写为<code>@click=&#39;show()&#39;</code></p>
-<p><strong>点击添加列表条目</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"item in arr"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"add()"</span>&gt;</span>add One<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>点击时的<code>add</code>方法必须写在<code>methods</code>里<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line">            <span class="attr">el</span>: <span class="string">"#app"</span>,</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">arr</span>: [<span class="string">'apple'</span>, <span class="string">'pear'</span>, <span class="string">'grape'</span>]</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">methods</span>: &#123;</div><div class="line">                <span class="attr">add</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="keyword">this</span>.arr.push(<span class="string">'strawberry'</span>)</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;)</div></pre></td></tr></table></figure></p>
-
       
     </div>
 
@@ -112,7 +176,7 @@
 
     <span class="post-tags">
       <i class="icon-tags"></i>
-        <a href="/tags/vue/">vue</a><a href="/tags/v-model/">v-model</a><a href="/tags/v-for/">v-for</a><a href="/tags/v-on/">v-on</a>
+        <a href="/tags/vue/">vue</a><a href="/tags/v-model/">v-model</a><a href="/tags/v-for/">v-for</a><a href="/tags/v-show/">v-show</a>
     </span>
     
 
