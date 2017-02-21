@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>vue-cli+webpack搭建指南 | 清澈的风</title>
+
+  
+  <meta name="author" content="windy">
+  
+
+  
+  <meta name="description" content="today is windy">
+  
+
+  
+  
+  <meta name="keywords" content="vue,vue-cli,webpack">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="vue-cli+webpack搭建指南"/>
+
+  <meta property="og:site_name" content="清澈的风"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="清澈的风" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">清澈的风</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>vue-cli+webpack搭建指南</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/02/21/vue-cli-webpack/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-02-21T12:13:43.000Z">
+          2017-02-21
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><a href="https://github.com/vuejs/vue-cli" target="_blank" rel="external">vue-cli</a>是<a href="https://cn.vuejs.org/" target="_blank" rel="external">vue</a>官方提供的脚手架工具，常用于快速搭建SPA（Simple Page Application）单页应用。</p>
+<p><a href="https://github.com/webpack/webpack" target="_blank" rel="external">webpack</a>是当下最热门的前端资源模块化管理和打包工具。</p>
+<blockquote>
+<p>它可以将许多松散的模块按照依赖和规则打包成符合生产环境部署的前端资源。还可以将按需加载的模块进行代码分隔，等到实际需要的时候再异步加载。通过 loader 的转换，任何形式的资源都可以视作模块，比如 CommonJs 模块、 AMD 模块、 ES6 模块、CSS、图片、 JSON、Coffeescript、 LESS 等。<br><em>*更多请参考<a href="http://webpackdoc.com/" target="_blank" rel="external">webpack中文指南</a></em></p>
+</blockquote>
+<a id="more"></a>
+<p><code>vue-cli</code>提供了一些模板选项：</p>
+<blockquote>
+<ul>
+<li>webpack </li>
+<li>webpack-simple </li>
+<li>browserify</li>
+<li>browserify-simple </li>
+<li>simple </li>
+</ul>
+</blockquote>
+<p><code>webpack</code>比<code>webpack-simple</code>多了一些语法检查如<code>JSLint</code>以及单元测试等功能，会在初始化的时候提供选项。<code>simple</code>仅仅会单独生成一个<code>index.html</code>页面。<code>browserify</code>是<code>webpack</code>出现前的产物，这里不再赘述。<br>总之，如果没有特殊需求的话，<code>webpack-simple</code>足以满足普通项目需要。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>所需条件：Node版本4.x以上，最好6.x ，npm版本3.x+以及Git<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g vue-cli</div></pre></td></tr></table></figure></p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vue init &lt;模板名称&gt; &lt;项目名称&gt;</div></pre></td></tr></table></figure>
+<p>例如我们这里选择<code>webpack-simple</code>模板，项目名称定为<code>my-project</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vue init webpack-simple my-project</div></pre></td></tr></table></figure></p>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>cd进入我们所生成的<code>my-project</code>目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd my-project</div></pre></td></tr></table></figure></p>
+<p>安装所需要的包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install</div></pre></td></tr></table></figure></p>
+<p>跳转到测试环境<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm run dev</div></pre></td></tr></table></figure></p>
+<p>会出现如下界面<br><img src="/images/vue-start.png" alt=""><br>这样初始搭建就完成了。</p>
+<hr>
+<p><strong><em>注意：</em></strong><br><em>*在使用<code>webpack-simple</code>模板时，可能会由于<code>:8080</code>端口被占用而自动跳转到<code>:8081</code>端口，而当使用<code>webpack</code>模板时，会因为端口冲突报错无法执行，此时去<code>config/index.js</code>文件里去更改端口号<code>port</code>即可</em></p>
+<p><em>*由于自动生成的js文件里使用了ES6语法，如果你使用的是<code>webstorm</code>，可以从设置里去选择语言库避免一些不必要的警告</em></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a><a href="/tags/vue-cli/">vue-cli</a><a href="/tags/webpack/">webpack</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<div id="comment">
+	
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/02/21/vue-cli-webpack/" data-title="vue-cli+webpack搭建指南" data-url="http://yoursite.com/2017/02/21/vue-cli-webpack/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"6293699079201359000"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 windy
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
