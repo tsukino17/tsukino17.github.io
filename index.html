@@ -47,9 +47,9 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">主页</a></li>
+        <li><a href="/">Home</a></li>
       
-        <li><a href="/archives">归档</a></li>
+        <li><a href="/archives">Archives</a></li>
       
     </ul>
   </nav>
@@ -57,6 +57,80 @@
 
     <main class="site-main posts-loop">
     
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/02/22/vue-4/"><span>vue2.0笔记(四)——组件和模板</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/02/22/vue-4/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-02-22T11:08:46.000Z">
+          2017-02-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="组件-Component"><a href="#组件-Component" class="headerlink" title="组件 Component"></a>组件 Component</h2><p>组件（Component）是 Vue.js 最强大的功能之一。<br>组件可以扩展 HTML 元素，封装可重用的代码(即模板template)。</p>
+<h3 id="全局组件"><a href="#全局组件" class="headerlink" title="全局组件"></a>全局组件</h3><p>全局组件意味着所有实例都可以使用这个组件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">my-com</span>&gt;</span><span class="tag">&lt;/<span class="name">my-com</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">my-com</span>&gt;</span><span class="tag">&lt;/<span class="name">my-com</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//注册组件</span></div><div class="line">Vue.component(<span class="string">'my-com'</span>,&#123;</div><div class="line">        <span class="attr">template</span>:<span class="string">'&lt;h1&gt;hello&lt;/h1&gt;'</span></div><div class="line">    &#125;);</div><div class="line"><span class="comment">//一个实例</span></div><div class="line">    <span class="keyword">new</span> Vue(&#123;</div><div class="line">        <span class="attr">el</span>:<span class="string">'#app'</span></div><div class="line">    &#125;);</div><div class="line"><span class="comment">//又一个实例</span></div><div class="line">    <span class="keyword">new</span> Vue(&#123;</div><div class="line">        <span class="attr">el</span>:<span class="string">'#app1'</span></div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<p><em>※实例基本没什么限制，只要不是挂载到本身就可以☞ <code>el:&#39;my-com&#39;</code>是行不通的</em></p>
+<h3 id="局部组件"><a href="#局部组件" class="headerlink" title="局部组件"></a>局部组件</h3><p>我们也可以在实例选项中注册局部组件，这样组件只能在这个实例中使用<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 可以注册多个组件和模板 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">com-one</span>&gt;</span><span class="tag">&lt;/<span class="name">com-one</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">com-two</span>&gt;</span><span class="tag">&lt;/<span class="name">com-two</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> temOne=&#123;</div><div class="line">        <span class="attr">template</span>:<span class="string">'&lt;h1&gt;hello&lt;/h1&gt;'</span></div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> temTwo=&#123;</div><div class="line">        <span class="attr">template</span>:<span class="string">'&lt;h1&gt;Vue&lt;/h1&gt;'</span></div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">new</span> Vue(&#123;</div><div class="line">        <span class="attr">el</span>:<span class="string">'#app'</span>,</div><div class="line">        <span class="attr">components</span>:&#123;</div><div class="line">            <span class="string">'com-one'</span>:temOne,</div><div class="line">            <span class="string">'com-two'</span>:temTwo</div><div class="line">        &#125;</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<h2 id="Prop"><a href="#Prop" class="headerlink" title="Prop"></a>Prop</h2><p><code>prop</code>是父组件用来传递数据的一个自定义属性。<br>父组件的数据需要通过<code>props</code>把数据传给子组件，子组件需要显式地用<code>props</code>选项声明<code>prop</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">my-com</span> <span class="attr">name</span>=<span class="string">"waston"</span> <span class="attr">age</span>=<span class="string">"18"</span>&gt;</span><span class="tag">&lt;/<span class="name">my-com</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Vue.component(<span class="string">'my-com'</span>,&#123;</div><div class="line">       <span class="attr">props</span>:[<span class="string">'name'</span>,<span class="string">'age'</span>],</div><div class="line">       <span class="attr">template</span>:<span class="string">'&lt;h1&gt;&#123;&#123;name&#125;&#125;:&#123;&#123;age&#125;&#125;&lt;/h1&gt;'</span></div><div class="line">   &#125;);</div><div class="line"></div><div class="line">   <span class="keyword">new</span> Vue(&#123;</div><div class="line">       <span class="attr">el</span>:<span class="string">'#app'</span></div><div class="line">   &#125;)</div></pre></td></tr></table></figure>
+<p>简言之，就是父级(组件)自定义一些属性以及属性值，然后可以传到它的直接子级（所使用的模板）里<br><em>※注意是<code>直接子级</code> 如果h1外面再嵌套一层p无效</em></p>
+<h3 id="动态Prop"><a href="#动态Prop" class="headerlink" title="动态Prop"></a>动态Prop</h3><p>类似于用<code>v-bind</code>绑定<code>HTML</code>特性到一个表达式，也可以用<code>v-bind</code>动态绑定<code>props</code>的值到父组件的数据中。每当父组件的数据变化时，该变化也会传导给子组件<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"inputmsg"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">my-com</span> <span class="attr">:msg</span>=<span class="string">"inputmsg"</span>&gt;</span><span class="tag">&lt;/<span class="name">my-com</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Vue.component(&apos;my-com&apos;,&#123;</div><div class="line">       props:[&apos;msg&apos;],</div><div class="line">       template:&apos;&lt;h1&gt;&#123;&#123;msg&#125;&#125;&lt;/h1&gt;&apos;</div><div class="line">   &#125;)</div><div class="line">   new Vue(&#123;</div><div class="line">       el:&quot;#app&quot;,</div><div class="line">       data:&#123;</div><div class="line">           inputmessage:&apos;default message&apos;</div><div class="line">       &#125;</div><div class="line">   &#125;)</div></pre></td></tr></table></figure>
+<p>简言之，即绑定那个写在<code>props</code>里面的属性<br><em>※局部组件不便于定义props</em></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a><a href="/tags/template/">template</a><a href="/tags/component/">component</a><a href="/tags/prop/">prop</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="2017/02/22/vue-4/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
   <article>
 
   
@@ -112,7 +186,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="2017/02/21/vue-cli-webpack/#comment">评论</a>
+          <a href="2017/02/21/vue-cli-webpack/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -179,7 +253,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="2017/02/15/vue-3/#comment">评论</a>
+          <a href="2017/02/15/vue-3/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -240,7 +314,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="2017/02/14/vue-2/#comment">评论</a>
+          <a href="2017/02/14/vue-2/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -304,7 +378,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="2017/02/13/vue-1/#comment">评论</a>
+          <a href="2017/02/13/vue-1/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -390,7 +464,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="2017/01/11/node-route/#comment">评论</a>
+          <a href="2017/01/11/node-route/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -451,7 +525,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="2016/11/10/howToUseFontFace3/#comment">评论</a>
+          <a href="2016/11/10/howToUseFontFace3/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -522,7 +596,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="2016/10/15/nodejs-crawler/#comment">评论</a>
+          <a href="2016/10/15/nodejs-crawler/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -583,7 +657,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="2016/09/20/howToUseFontFace2/#comment">评论</a>
+          <a href="2016/09/20/howToUseFontFace2/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -645,68 +719,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="2016/09/15/howToUseFontFace1/#comment">评论</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2016/09/15/howToUseFontFace/"><span>如何花式使用字体（一）</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2016/09/15/howToUseFontFace/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-09-14T17:47:43.000Z">
-          2016-09-15
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>不管你是前端狗、设计师还是切图仔，你都绕不过搞字体这条路，虽然这条路并不是很难过，然鹅也是有一些注意事项的，请掏出小本，做好笔记：</p>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/font/">font</a><a href="/tags/css/">css</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="2016/09/15/howToUseFontFace/#comment">评论</a>
+          <a href="2016/09/15/howToUseFontFace1/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -720,7 +733,7 @@
 <nav class="pagination">
   
   
-  <a href="/page/2/" class="pagination-next">下一页</a>
+  <a href="/page/2/" class="pagination-next">Next</a>
   
 </nav>
     </main>
