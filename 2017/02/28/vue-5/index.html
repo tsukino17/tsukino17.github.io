@@ -50,9 +50,9 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">主页</a></li>
+        <li><a href="/">Home</a></li>
       
-        <li><a href="/archives">归档</a></li>
+        <li><a href="/archives">Archives</a></li>
       
     </ul>
   </nav>
@@ -92,7 +92,7 @@
 <p><strong>循环绑定prop</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name-list</span> <span class="attr">v-for</span>=<span class="string">"person in people"</span> <span class="attr">:man</span>=<span class="string">"person"</span>&gt;</span><span class="tag">&lt;/<span class="name">name-list</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Vue.component(&apos;name-list&apos;,&#123;</div><div class="line">        props:[&apos;man&apos;],</div><div class="line">        template:&apos;&lt;li&gt;&#123;&#123;man.name&#125;&#125;&lt;/li&gt;&apos;</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    new Vue(&#123;</div><div class="line">        el:&quot;#app&quot;,</div><div class="line">        data:&#123;</div><div class="line">            people:[</div><div class="line">                &#123;name:&apos;mary&apos;&#125;,</div><div class="line">                &#123;name:&apos;john&apos;&#125;,</div><div class="line">                &#123;name:&apos;sherlock&apos;&#125;</div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line">    &#125;)</div></pre></td></tr></table></figure>
 <p><code>man</code>相当于一个中间的媒介，原来li里是<code>{ {person.name} }</code>,让<code>man</code>=<code>person</code>,然后再写到<code>props</code>里，li也就替换成了<code>{ {man.name} }</code></p>
-<p><em>※注意: prop 是单向绑定的：当父组件的属性变化时，将传导给子组件，但是不会反过来。(待写demo验证)</em></p>
+<p><em>※注意: prop 是单向绑定的：当父组件的属性变化时，将传导给子组件，但是不会反过来。</em></p>
 
       
     </div>
