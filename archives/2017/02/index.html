@@ -1,167 +1,952 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>Archives: 2017/2 | 清澈的风</title>
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.2.6 -->
 
-  
-  <meta name="author" content="windy">
-  
+    <!-- Title -->
+    
+    <title>
+        
+            أرشيف: 2017/2 | 
+        
+        清澈的风
+    </title>
 
-  
-  <meta name="description" content="today is windy">
-  
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
 
-  
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="windy">
+    <meta name="description" content="today is windy">
+    <meta name="keywords" content="null">
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
 
-  
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
 
-  <meta property="og:site_name" content="清澈的风"/>
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="清澈的风">
 
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="أرشيف: 2017/2 | 清澈的风">
+    <meta property="og:description" content="today is windy">
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="清澈的风" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+    body, html {
+        font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    }
+
+    a {
+        color: #00838F;
+    }
+
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important;
+    }
+
+    /* Sidebar User Drop Down Menu Text Color */
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+        color: #0097A7 !important;
+    }
+
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+        color: #0097A7 !important;
+    }
+
+    .toTop {
+        background: #757575 !important;
+    }
+
+    .material-layout .material-post>.material-nav,
+    .material-layout .material-index>.material-nav,
+    .material-nav a {
+        color: #757575;
+    }
+
+    #scheme-Paradox .MD-burger-layer {
+        background-color: #757575;
+    }
+
+    #scheme-Paradox #post-toc-trigger-btn {
+        color: #757575;
+    }
+
+    .post-toc a:hover {
+        color: #00838F;
+        text-decoration: underline;
+    }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5;
+        }
+
+        /* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+
+    <script src="/js/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/css/highlight/solarized-white.css">
+
+    <!-- UC Browser Compatible-->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write('<link rel="stylesheet" href="/css/uc.css">');
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    <!-- Custom Head -->
+    
 </head>
 
 
-<body>
-<div class="blog">
-  <div class="content">
+    
+        <body id="scheme-Paradox">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">清澈的风</a>
-    </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-    </ul>
-  </nav>
-</header>
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
 
-    <main class="site-main posts-loop">
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Index Module -->
+<div class="material-index mdl-grid">
+    
+    <div class="locate-thumbnail-symbol"></div>
+
+    
+        
+            <!-- Paradox Thumbnail -->
+            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
     
 
-<article>
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2017/02/28/vue-5/">vue2.0笔记(五)——props</a></p>
+    </div>
 
-  <h2 class="article-title ">2017/2</h2>
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            Propprop是父组件用来传递数据的一个自定义属性,是property。父组件的数据需要通过props把数据传给子组件，子组件需要显式地用props选项声明prop123&lt;div id="app"&gt;    &lt;my-com name="waston" age="18"&gt;&lt;/my-com&gt;&lt;/div&gt;
+12345678Vue.component('my-com',&#123;       props:['name','age'],       template:'&lt;h1&gt;&#123;&#123;name&#125;&#125;:&#123;&#123;age&#125;&#125;&lt;/h1&gt;'   &#125;);   new Vue(&#123;       el:'#app'   &#125;)
+简言之，就是父级(组件)自定义一些属性以及属性值，然后可以传到它的直接子级（所使用的模板）里※注意是直接子级 如果h1外面再嵌套一层p无效
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2017/02/28/vue-5/" target="_self">واصل القراءة</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/avatar.png" width="44px" height="44px" alt="windy's avatar">
+            </div>
+            <div>
+                <strong>windy</strong>
+                <span>Feb 28, 2017</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                
+            </span>
 
-  <div class="archive">
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2017-02-28T09:37:14.000Z">
-            <a href="/2017/02/28/vue-5/">2017-02-28</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2017/02/28/vue-5/"><span>vue2.0笔记(五)——props</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2017-02-23T09:34:15.000Z">
-            <a href="/2017/02/23/ec2vpn/">2017-02-23</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2017/02/23/ec2vpn/"><span>AWS EC2+Shadowsocks</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2017-02-22T11:08:46.000Z">
-            <a href="/2017/02/22/vue-4/">2017-02-22</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2017/02/22/vue-4/"><span>vue2.0笔记(四)——组件和模板</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2017-02-21T12:13:43.000Z">
-            <a href="/2017/02/21/vue-cli-webpack/">2017-02-21</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2017/02/21/vue-cli-webpack/"><span>vue-cli+webpack搭建指南</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2017-02-15T02:39:28.000Z">
-            <a href="/2017/02/15/vue-3/">2017-02-15</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2017/02/15/vue-3/"><span>vue2.0笔记(三)——计算属性</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2017-02-14T03:03:33.000Z">
-            <a href="/2017/02/14/vue-2/">2017-02-14</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2017/02/14/vue-2/"><span>vue2.0笔记(二)——事件</span></a></h3>
-          
-        </div>
-      </div>
-    
-      <div class="post archive">
-        <div class="archive-post">
-          <time datetime="2017-02-13T11:37:22.000Z">
-            <a href="/2017/02/13/vue-1/">2017-02-13</a>
-          </time>
-          
-            <h3 class="archive-title"><a href="/2017/02/13/vue-1/"><span>vue2.0笔记(一)</span></a></h3>
-          
-        </div>
-      </div>
-    
-    <nav class="pagination">
-  
-  
-</nav>
-  </div>
+            
 
-</article>
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2017 windy
-    
-  </p>
-</footer>
-    
-  </div>
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
 </div>
-</body>
+
+        
+        
+    
+        
+            <!-- Paradox Thumbnail -->
+            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
+    
+
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2017/02/23/ec2vpn/">AWS EC2+Shadowsocks</a></p>
+    </div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            
+AWS:Amazon Web Server
+
+EC2:the instance of AWS
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2017/02/23/ec2vpn/" target="_self">واصل القراءة</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/avatar.png" width="44px" height="44px" alt="windy's avatar">
+            </div>
+            <div>
+                <strong>windy</strong>
+                <span>Feb 23, 2017</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                
+            </span>
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+        
+        
+    
+        
+            <!-- Paradox Thumbnail -->
+            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
+    
+
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2017/02/22/vue-4/">vue2.0笔记(四)——组件和模板</a></p>
+    </div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            组件 Component组件（Component）是 Vue.js 最强大的功能之一。组件可以扩展 HTML 元素，封装可重用的代码(即模板template)。
+全局组件全局组件意味着所有实例都可以使用这个组件
+123456&lt;div id="app"&gt;    &lt;my-com&gt;&lt;/my-com&gt;&lt;/div&gt;&lt;div id="app1"&gt;    &lt;my-com&gt;&lt;/my-com&gt;&lt;/div&gt;
+1234567891011121314151617//注册组件Vue.component('my-com',&#123;        template:'&lt;h1&gt;&#123;&#123;msg&#125;&#125;&lt;/h1&gt;',        data:function () &#123;            return&#123;                msg:'hello'            &#125;        &#125;    &#125;);//一个实例    new Vue(&#123;        el:'#app'    &#125;);//又一个实例    new Vue(&#123;        el:'#app1'    &#125;);
+※实例基本没什么限制，只要不是挂载到本身就可以☞ el:&#39;my-com&#39;是行不通的※此外组件的data要在注册时候写，并且data里只能是个return出来的返回值
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2017/02/22/vue-4/" target="_self">واصل القراءة</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/avatar.png" width="44px" height="44px" alt="windy's avatar">
+            </div>
+            <div>
+                <strong>windy</strong>
+                <span>Feb 22, 2017</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                
+            </span>
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+        
+        
+    
+        
+            <!-- Paradox Thumbnail -->
+            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
+    
+
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2017/02/21/vue-cli-webpack/">vue-cli+webpack搭建指南</a></p>
+    </div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            vue-cli是vue官方提供的脚手架工具，常用于快速搭建SPA（Simple Page Application）单页应用。
+webpack是当下最热门的前端资源模块化管理和打包工具。
+
+它可以将许多松散的模块按照依赖和规则打包成符合生产环境部署的前端资源。还可以将按需加载的模块进行代码分隔，等到实际需要的时候再异步加载。通过 loader 的转换，任何形式的资源都可以视作模块，比如 CommonJs 模块、 AMD 模块、 ES6 模块、CSS、图片、 JSON、Coffeescript、 LESS 等。*更多请参考webpack中文指南
+
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2017/02/21/vue-cli-webpack/" target="_self">واصل القراءة</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/avatar.png" width="44px" height="44px" alt="windy's avatar">
+            </div>
+            <div>
+                <strong>windy</strong>
+                <span>Feb 21, 2017</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                
+            </span>
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+        
+        
+    
+        
+            <!-- Paradox Thumbnail -->
+            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
+    
+
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2017/02/15/vue-3/">vue2.0笔记(三)——计算属性</a></p>
+    </div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            计算属性
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2017/02/15/vue-3/" target="_self">واصل القراءة</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/avatar.png" width="44px" height="44px" alt="windy's avatar">
+            </div>
+            <div>
+                <strong>windy</strong>
+                <span>Feb 15, 2017</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                
+            </span>
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+        
+        
+    
+        
+            <!-- Paradox Thumbnail -->
+            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
+    
+
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2017/02/14/vue-2/">vue2.0笔记(二)——事件</a></p>
+    </div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            v-onv-on用于事件绑定，v-on:冒号后面可以加任意的原生js事件如click/mouseover/dblclick等,v-on:的简写是@,如v-on:click=&#39;show()&#39;可以简写为@click=&#39;show()&#39;除了方法名外，也可以直接写脚本语句如@click=&quot;alert(1)&quot;
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2017/02/14/vue-2/" target="_self">واصل القراءة</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/avatar.png" width="44px" height="44px" alt="windy's avatar">
+            </div>
+            <div>
+                <strong>windy</strong>
+                <span>Feb 14, 2017</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                
+            </span>
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+        
+        
+    
+        
+            <!-- Paradox Thumbnail -->
+            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+        
+    
+
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2017/02/13/vue-1/">vue2.0笔记(一)</a></p>
+    </div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            基础
+el是vue的固定写法，代表element，el:后面不仅可以跟id,也可以跟class或tagName,即el:&quot;#app&quot;,el:&quot;.main&quot;,el:&quot;ul&quot;都是合理的，但写在body上不太好使目前，建议还是用一个div包裹
+ data是必不可少的环节，当你发觉数据出不来时，可以审查是否在data定义过，或者根据vue的自带报错查找bug
+ this是指你创建的这个实例new Vue,如果你var vm=new Vue({}),那么this就是你命名的vm
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2017/02/13/vue-1/" target="_self">واصل القراءة</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/avatar.png" width="44px" height="44px" alt="windy's avatar">
+            </div>
+            <div>
+                <strong>windy</strong>
+                <span>Feb 13, 2017</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                
+            </span>
+
+            
+
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
+        </div>
+    </div>
+</div>
+
+        
+        
+    
+
+    
+
+    
+        <script>
+    var randomNum;
+
+    var locatePost = $('.locate-thumbnail-symbol').next();
+    for(var i = 0; i < 10; i++) {
+        randomNum = Math.floor(Math.random() * 19 + 1);
+
+        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
+        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
+
+        locatePost = locatePost.next();
+    }
+</script>
+
+    
+</div>
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="windy's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+            الرئيسية
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+    <!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+    -->
+
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             أرشيف
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/02/">February 2017<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">January 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">November 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">October 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">September 2016<span class="sidebar_archives-count">4</span></a>
+        </ul>
+    </li>
+
+    <!-- Categories  -->
+    
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+  	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+            رقم المقالة
+            <span class="sidebar-badge">14</span>
+        </a>
+    </li>
+</ul>
+
+
+        <!-- Sidebar Divider -->
+        <div class="sidebar-divider"></div>
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        سمة - Material
+        <span class="sidebar-badge badge-circle">i</span>
+    </div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+    sidebar.help
+    <span class="mdl-button__ripple-container">
+      <span class="mdl-ripple"></span>
+    </span>
+  </div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+    </div>
+
+    <!-- Sidebar Sponsor -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;清澈的风
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
 </html>
