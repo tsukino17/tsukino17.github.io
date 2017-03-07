@@ -50,9 +50,9 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">Home</a></li>
+        <li><a href="/">主页</a></li>
       
-        <li><a href="/archives">Archives</a></li>
+        <li><a href="/archives">归档</a></li>
       
     </ul>
   </nav>
@@ -96,6 +96,8 @@
 <h3 id="静态模板-静态数据-prop"><a href="#静态模板-静态数据-prop" class="headerlink" title="静态模板+静态数据+prop"></a>静态模板+静态数据+prop</h3><p>结合模板、组件以及动态prop的常见用法</p>
 <script async src="//jsfiddle.net/windyBaby/dwgxof86/embed/js,html,result/"></script>
 
+<h3 id="props验证"><a href="#props验证" class="headerlink" title="props验证"></a>props验证</h3><p>常用写法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Vue.component(<span class="string">'component-name'</span>, &#123;</div><div class="line">  <span class="attr">template</span>: <span class="string">'#componentId'</span>,</div><div class="line">  <span class="attr">props</span>: &#123;  <span class="comment">//多个prop传递,因为prop是对象,只要是对象格式就行</span></div><div class="line">    value: &#123;</div><div class="line">      <span class="attr">type</span>: <span class="built_in">Number</span>,</div><div class="line">      <span class="attr">default</span>: <span class="number">0</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">label</span>: &#123;</div><div class="line">      <span class="attr">type</span>: <span class="built_in">String</span>,</div><div class="line">      <span class="attr">default</span>: <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 
       
     </div>
