@@ -61,6 +61,76 @@
 
   
     
+    <h3 class="article-title"><a href="/2017/03/14/vue-eleUI/"><span>vue2.0+webpack+elementUI搭建小贴士</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/14/vue-eleUI/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-14T03:57:45.000Z">
+          2017-03-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><code>elementUI</code>是饿了么团队开发的配合Vue使用的UI<br>根据之前的webpack+vue生成基本项目目录后，使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i element-ui -D</div></pre></td></tr></table></figure></p>
+<p>安装到开发环境的项目依赖(devDependencies)里</p>
+<blockquote>
+<p>i  是 install 的简写<br>-S 是 - -save  的简写<br>-D 是 - -save-dev 的简写</p>
+</blockquote>
+<p>之后找到入口文件<code>main.js</code>，引入我们所需要的模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line">+ <span class="keyword">import</span> ElementUI <span class="keyword">from</span> <span class="string">'element-ui'</span></div><div class="line">+ <span class="keyword">import</span> <span class="string">'element-ui/lib/theme-default/index.css'</span></div><div class="line">  <span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></div></pre></td></tr></table></figure></p>
+<p>在引入外部模块后，一定要记得使用<code>use</code>来使用这个模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Vue.use(ElementUI)</div></pre></td></tr></table></figure></p>
+<p>又引入了<code>elementUI</code>的css文件之后，一定要去看看<code>package.json</code>里有没有相关的loader依赖，这里需要的是<code>css-loader</code>、<code>style-loader</code>和<code>file-loader</code><br>然后去<code>webpack.config.js</code>里去配置相关的<code>loader</code>，用于加载CSS文件和字体等文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">  <span class="attr">rules</span>: [&#123;</div><div class="line">    <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</div><div class="line">    <span class="attr">loader</span>: <span class="string">'style-loader!css-loader'</span></div><div class="line">  &#125;, &#123;</div><div class="line">    <span class="attr">test</span>: <span class="regexp">/\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/</span>,</div><div class="line">    <span class="attr">loader</span>: <span class="string">'file-loader'</span></div><div class="line">  &#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>之后把UI组件写在你的vue实例的模板里就可以了<br><img src="/images/smile.jpg" alt=""></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a><a href="/tags/webpack/">webpack</a><a href="/tags/elementUI/">elementUI</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/14/vue-eleUI/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2017/03/07/vue-6/"><span>vue2.0笔记(六)--slot</span></a></h3>
     
   
@@ -453,7 +523,7 @@
 
     <span class="post-tags">
       <i class="icon-tags"></i>
-        <a href="/tags/vue/">vue</a><a href="/tags/vue-cli/">vue-cli</a><a href="/tags/webpack/">webpack</a>
+        <a href="/tags/vue/">vue</a><a href="/tags/webpack/">webpack</a><a href="/tags/vue-cli/">vue-cli</a>
     </span>
     
 
@@ -657,92 +727,6 @@
         <i class="icon-comments"></i>
         <span>
           <a href="/2017/02/13/vue-1/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/01/11/node-route/"><span>node笔记之express路由</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/01/11/node-route/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-01-11T06:22:31.000Z">
-          2017-01-11
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="一、web服务器简介"><a href="#一、web服务器简介" class="headerlink" title="一、web服务器简介"></a>一、web服务器简介</h2><h3 id="1-web服务器的功能"><a href="#1-web服务器的功能" class="headerlink" title="1.web服务器的功能"></a>1.web服务器的功能</h3><blockquote>
-<ul>
-<li>接受http请求(GET、POST、DELETE、PUT、PATCH) </li>
-<li>处理http请求(自己处理或交给其他程序处理)</li>
-<li>做出响应(返回页面、文件、各类数据)</li>
-</ul>
-</blockquote>
-<h3 id="2-常见web服务器架构"><a href="#2-常见web服务器架构" class="headerlink" title="2.常见web服务器架构"></a>2.常见web服务器架构</h3><blockquote>
-<ul>
-<li>Nginx/Apache:负责接收HTTP请求,确定谁来处理请求,并返回请求的结果</li>
-<li>php-fhm/php模块:处理分配给自己的请求,并将处理结果返回给分配者 </li>
-</ul>
-</blockquote>
-<h3 id="3-常见请求种类"><a href="#3-常见请求种类" class="headerlink" title="3.常见请求种类:"></a>3.常见请求种类:</h3><blockquote>
-<ul>
-<li>请求文件:包括静态文件(网页、图片、JS、CSS文件),以及由程序处理得到的文件</li>
-<li>完成特定的操作:如登陆、获取特定数据等</li>
-</ul>
-</blockquote>
-<h3 id="4-node的web服务器"><a href="#4-node的web服务器" class="headerlink" title="4.node的web服务器"></a>4.node的web服务器</h3><blockquote>
-<ul>
-<li>不依赖其他特定的web服务器软件(如Apache、Nginx、IIS)</li>
-<li>直接对请求进行逻辑处理</li>
-<li>可以对web服务器各种配置(类似于apache要配置.ini文件)</li>
-</ul>
-</blockquote>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/node-webserver/">node,webserver</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/01/11/node-route/#comment">Comments</a>
         </span>
       </span>
     </div>

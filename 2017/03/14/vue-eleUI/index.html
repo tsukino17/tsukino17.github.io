@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>vue2.0+webpack+elementUI搭建小贴士 | 清澈的风</title>
+
+  
+  <meta name="author" content="windy">
+  
+
+  
+  <meta name="description" content="today is windy">
+  
+
+  
+  
+  <meta name="keywords" content="vue,webpack,elementUI">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="vue2.0+webpack+elementUI搭建小贴士"/>
+
+  <meta property="og:site_name" content="清澈的风"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="清澈的风" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">清澈的风</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>vue2.0+webpack+elementUI搭建小贴士</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/14/vue-eleUI/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-14T03:57:45.000Z">
+          2017-03-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><code>elementUI</code>是饿了么团队开发的配合Vue使用的UI<br>根据之前的webpack+vue生成基本项目目录后，使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i element-ui -D</div></pre></td></tr></table></figure></p>
+<p>安装到开发环境的项目依赖(devDependencies)里</p>
+<blockquote>
+<p>i  是 install 的简写<br>-S 是 - -save  的简写<br>-D 是 - -save-dev 的简写</p>
+</blockquote>
+<p>之后找到入口文件<code>main.js</code>，引入我们所需要的模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line">+ <span class="keyword">import</span> ElementUI <span class="keyword">from</span> <span class="string">'element-ui'</span></div><div class="line">+ <span class="keyword">import</span> <span class="string">'element-ui/lib/theme-default/index.css'</span></div><div class="line">  <span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></div></pre></td></tr></table></figure></p>
+<p>在引入外部模块后，一定要记得使用<code>use</code>来使用这个模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Vue.use(ElementUI)</div></pre></td></tr></table></figure></p>
+<p>又引入了<code>elementUI</code>的css文件之后，一定要去看看<code>package.json</code>里有没有相关的loader依赖，这里需要的是<code>css-loader</code>、<code>style-loader</code>和<code>file-loader</code><br>然后去<code>webpack.config.js</code>里去配置相关的<code>loader</code>，用于加载CSS文件和字体等文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">  <span class="attr">rules</span>: [&#123;</div><div class="line">    <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</div><div class="line">    <span class="attr">loader</span>: <span class="string">'style-loader!css-loader'</span></div><div class="line">  &#125;, &#123;</div><div class="line">    <span class="attr">test</span>: <span class="regexp">/\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/</span>,</div><div class="line">    <span class="attr">loader</span>: <span class="string">'file-loader'</span></div><div class="line">  &#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>之后把UI组件写在你的vue实例的模板里就可以了<br><img src="/images/smile.jpg" alt=""></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a><a href="/tags/webpack/">webpack</a><a href="/tags/elementUI/">elementUI</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<div id="comment">
+		
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/03/14/vue-eleUI/" data-title="vue2.0+webpack+elementUI搭建小贴士" data-url="http://yoursite.com/2017/03/14/vue-eleUI/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"windybaby"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0]
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+
+	</div>
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 windy
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
