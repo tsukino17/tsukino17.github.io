@@ -47,9 +47,9 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">Home</a></li>
+        <li><a href="/">主页</a></li>
       
-        <li><a href="/archives">Archives</a></li>
+        <li><a href="/archives">归档</a></li>
       
     </ul>
   </nav>
@@ -57,6 +57,95 @@
 
     <main class="site-main posts-loop">
     
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/03/27/babel6-guide/"><span>babel6 简明指南</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/27/babel6-guide/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-27T07:38:32.000Z">
+          2017-03-27
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>随着ES6的发展，ES6的编译工具也在不断更新着，babel作为最常用的ES6编译工具，目前也发展到了6.x版本，以下作为简要使用指南</p>
+<p>相对于之前的<code>babel5</code>,<code>babel6</code>不再是一个整的大的<code>package</code>,而是拆分了很多个小的<code>packages</code>可供选择安装</p>
+<h3 id="基础安装-Installing-Babel"><a href="#基础安装-Installing-Babel" class="headerlink" title="基础安装 Installing Babel"></a>基础安装 Installing Babel</h3><p>如果你想在CLI(command-line interface命令行界面)使用的话，请安装<code>babel-cli</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --global babel-cli</div></pre></td></tr></table></figure></p>
+<p>如果你想结合<code>node.js</code>来写的话，需要安装<code>babel-core</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --global babel-core</div></pre></td></tr></table></figure></p>
+<h3 id="插件和预设-Plugins-and-Presets"><a href="#插件和预设-Plugins-and-Presets" class="headerlink" title="插件和预设 Plugins and Presets"></a>插件和预设 Plugins and Presets</h3><p><code>babel6</code>里并没有默认的转换规则，所以你安装了如上两项，用babel运行你的文件会发现并没有什么变化，因此我们需要安装所需插件，并在<code>.babelrc</code>文件做一些设置</p>
+<p><strong>例如使用箭头函数</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev babel-plugin-transform-es2015-arrow-functions</div></pre></td></tr></table></figure></p>
+<p>同时在<code>.babelrc</code>文件添加：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"plugins"</span>: [<span class="string">"transform-es2015-arrow-functions"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>当然还有很多细节我们不可能一点点全部去安装，我们如果想要转换某些特性的话，可以去安装某个版本的预置，babel可以去向下兼容</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev babel-preset-es2015</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//.babelrc文件</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"presets"</span>: [<span class="string">"es2015"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>如果想包含所有javascript版本的话：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev babel-preset-env</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//.babelrc文件</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"presets"</span>: [<span class="string">"env"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="编译使用"><a href="#编译使用" class="headerlink" title="编译使用"></a>编译使用</h3><ul>
+<li><p>在安装了<code>babel-cli</code>之后，在命令行使用<code>babel</code>命令去编译文件：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">babel es6.js</div></pre></td></tr></table></figure>
+<p>  输出编译后的文件:</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">babel es6.js -o compiled.js</div></pre></td></tr></table></figure>
+<p>  监听编译文件变动:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">babel es6.js -o -w compiled.js</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装完<code>babel-cli</code>和<code>babel-core</code>之后，使用<code>babel-node</code>命令去编译并运行文件</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//不适于生产环境</span></div><div class="line">$ babel-node es6.js</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><em>links:</em></p>
+<ul>
+<li><a href="http://babeljs.io/blog/2015/10/31/setting-up-babel-6" target="_blank" rel="external">setting-up-babel-6</a></li>
+<li><a href="https://babeljs.io/docs/usage/cli/" target="_blank" rel="external">babel-cli usage</a></li>
+</ul>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/babel6/">babel6</a><a href="/tags/es6/">es6</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/27/babel6-guide/#comment">评论</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
   <article>
 
   
@@ -117,7 +206,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/14/vue-eleUI/#comment">Comments</a>
+          <a href="/2017/03/14/vue-eleUI/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -188,7 +277,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/vue-6/#comment">Comments</a>
+          <a href="/2017/03/07/vue-6/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -254,7 +343,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/02/code-online/#comment">Comments</a>
+          <a href="/2017/03/02/code-online/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -317,7 +406,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/28/vue-5/#comment">Comments</a>
+          <a href="/2017/02/28/vue-5/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -404,7 +493,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/23/ec2vpn/#comment">Comments</a>
+          <a href="/2017/02/23/ec2vpn/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -469,7 +558,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/22/vue-4/#comment">Comments</a>
+          <a href="/2017/02/22/vue-4/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -523,7 +612,7 @@
 
     <span class="post-tags">
       <i class="icon-tags"></i>
-        <a href="/tags/vue/">vue</a><a href="/tags/webpack/">webpack</a><a href="/tags/vue-cli/">vue-cli</a>
+        <a href="/tags/vue/">vue</a><a href="/tags/vue-cli/">vue-cli</a><a href="/tags/webpack/">webpack</a>
     </span>
     
 
@@ -534,7 +623,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/21/vue-cli-webpack/#comment">Comments</a>
+          <a href="/2017/02/21/vue-cli-webpack/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -601,7 +690,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/15/vue-3/#comment">Comments</a>
+          <a href="/2017/02/15/vue-3/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -662,71 +751,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/14/vue-2/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/02/13/vue-1/"><span>vue2.0笔记(一)</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/02/13/vue-1/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-02-13T11:37:22.000Z">
-          2017-02-13
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><hr>
-<p><code>el</code>是vue的固定写法，代表<code>element</code>，<code>el:</code>后面不仅可以跟id,也可以跟class或tagName,即<code>el:&quot;#app&quot;</code>,<code>el:&quot;.main&quot;</code>,<code>el:&quot;ul&quot;</code>都是合理的，<em>但写在<code>body</code>上不太好使目前，建议还是用一个<code>div</code>包裹</em></p>
-<p> <code>data</code>是必不可少的环节，当你发觉数据出不来时，可以审查是否在data定义过，或者根据vue的自带报错查找bug</p>
-<p> <code>this</code>是指你创建的这个实例<code>new Vue</code>,如果你<code>var vm=new Vue({})</code>,那么<code>this</code>就是你命名的<code>vm</code></p>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/vue/">vue</a><a href="/tags/v-model/">v-model</a><a href="/tags/v-for/">v-for</a><a href="/tags/v-show/">v-show</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/02/13/vue-1/#comment">Comments</a>
+          <a href="/2017/02/14/vue-2/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -740,7 +765,7 @@
 <nav class="pagination">
   
   
-  <a href="/page/2/" class="pagination-next">Next</a>
+  <a href="/page/2/" class="pagination-next">下一页</a>
   
 </nav>
     </main>
