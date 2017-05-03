@@ -50,9 +50,9 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">主页</a></li>
+        <li><a href="/">Home</a></li>
       
-        <li><a href="/archives">归档</a></li>
+        <li><a href="/archives">Archives</a></li>
       
     </ul>
   </nav>
@@ -87,6 +87,7 @@
 <p>相对于之前的<code>babel5</code>,<code>babel6</code>不再是一个整的大的<code>package</code>,而是拆分了很多个小的<code>packages</code>可供选择安装</p>
 <h3 id="基础安装-Installing-Babel"><a href="#基础安装-Installing-Babel" class="headerlink" title="基础安装 Installing Babel"></a>基础安装 Installing Babel</h3><p>如果你想在CLI(command-line interface命令行界面)使用的话，请安装<code>babel-cli</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --global babel-cli</div></pre></td></tr></table></figure></p>
 <p>如果你想结合<code>node.js</code>来写的话，需要安装<code>babel-core</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --global babel-core</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h3 id="插件和预设-Plugins-and-Presets"><a href="#插件和预设-Plugins-and-Presets" class="headerlink" title="插件和预设 Plugins and Presets"></a>插件和预设 Plugins and Presets</h3><p><code>babel6</code>里并没有默认的转换规则，所以你安装了如上两项，用babel运行你的文件会发现并没有什么变化，因此我们需要安装所需插件，并在<code>.babelrc</code>文件做一些设置</p>
 <p><strong>例如使用箭头函数</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev babel-plugin-transform-es2015-arrow-functions</div></pre></td></tr></table></figure></p>
 <p>同时在<code>.babelrc</code>文件添加：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"plugins"</span>: [<span class="string">"transform-es2015-arrow-functions"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
