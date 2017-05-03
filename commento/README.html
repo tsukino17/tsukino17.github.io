@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>清澈的风</title>
+
+  
+  <meta name="author" content="windy">
+  
+
+  
+  <meta name="description" content="today is windy">
+  
+
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+
+  <meta property="og:site_name" content="清澈的风"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="清澈的风" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">清澈的风</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span></span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/commento/README.html" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-03T03:06:09.000Z">
+          2017-05-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="Commento"><a href="#Commento" class="headerlink" title="Commento"></a>Commento</h1><p>An open source, lightweight, and tracking-free comment engine.</p>
+<p><img src="https://cloud.githubusercontent.com/assets/7521600/25356132/d00013e0-2956-11e7-8dba-772a8040ae0c.png" alt="Example"></p>
+<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p><strong><a href="https://adtac.github.io/commento/example/demo.html" target="_blank" rel="external">I’ve hosted a live demo here. Check it out!</a></strong></p>
+<p>It’s really simple to embed a Commento section to your webpage. A trivial page would look like:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://0.0.0.0:8080/assets/commento.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        Commento.init(&#123;</div><div class="line">            <span class="attr">serverUrl</span>: <span class="string">"http://0.0.0.0:8080"</span></div><div class="line">        &#125;)</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"commento"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>And that’s it! Source the client-side script, add a <code>div</code> called <code>commento</code> (which will contain the comments) and initialize Commento with your server. The client-side script does all the hard work of building the markup and loading the CSS. The assets themselves (JavaScript and CSS) as served by the go application.</p>
+<p>The client-side script accepts an optional second argument <code>options</code>, in the form of a plain object. Currently, the only option is <code>(boolean) honeypot</code>, which adds a hidden input field to fool spammers. If anything is input into this field, the submission is silently ignored. This option defaults to <code>false</code> if the options param is not set explicitly.</p>
+<p>To get the server running, run:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ go get -v github.com/adtac/commento</div></pre></td></tr></table></figure>
+<p>and build the project using a <code>go build .</code> to get a binary. Internally, I’ve used sqlite3 as the database. Take a look at the code for more details.</p>
+<h3 id="Why"><a href="#Why" class="headerlink" title="Why?"></a>Why?</h3><p><a href="https://disqus.com/" target="_blank" rel="external">Disqus</a> is one of the most popular commenting services. However, over the years it has become quite bloated - one <a href="http://donw.io/post/github-comments/" target="_blank" rel="external">blog post</a> has a detailed analysis. In short, a Disqus-free page makes about 16 HTTP requests while the same page makes 105 requests when Disqus is enabled! This is mostly due to various tracking services that record every action you take on any website that has Disqus embedded.</p>
+<p>I ran a quick test: <a href="https://codepen.io/ryanbelisle/full/AwLgu/" target="_blank" rel="external">go to this codepen</a> and open your developer tools. You’ll see that the sum total of all network requests related to Disqus comes to about ~250 kB! And there aren’t even any comments!</p>
+<p>So I thought I’d quickly write a simple comment engine in Go. I’ve been learning Go for the past month or so and it has been fantastic.</p>
+<p>With Commento, you wouldn’t need to worry about shady ad companies getting your data through hundreds of tracking services. You wouldn’t need to worry about your page being slowed down - <strong>Commento uses just 22 kB total</strong>. And it’s all open source.</p>
+<h3 id="Contributing"><a href="#Contributing" class="headerlink" title="Contributing"></a>Contributing</h3><p>Commento is extremely simplistic in comparison to Disqus. It does not have voting, moderation, and some of the more advanced stuff. Patches are more than welcome! But do keep in mind the whole purpose of this project - a lightweight comment engine with zero user tracking.</p>
+<h4 id="Development"><a href="#Development" class="headerlink" title="Development"></a>Development</h4><p>To run the server</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ docker build . -t adtac/commento:VERSION</div><div class="line">$ docker run <span class="_">-d</span> -p 8080:8080 adtac/commento:VERSION</div></pre></td></tr></table></figure>
+<p>For the front end any static server will do, you can grab any from <a href="https://gist.github.com/willurd/5720255" target="_blank" rel="external">this list</a>.</p>
+<h3 id="License"><a href="#License" class="headerlink" title="License"></a>License</h3><p>MIT License. See the <a href="LICENSE">LICENSE</a> file for more information.</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  <script src="https://commento.now.sh/assets/commento.min.js"></script>
+<script>
+        Commento.init({
+            serverUrl: "https://commento.now.sh"
+        })
+</script>
+
+    <div id="commento">
+    </div>
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 windy
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
