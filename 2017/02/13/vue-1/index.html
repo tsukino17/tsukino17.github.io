@@ -50,9 +50,9 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">Home</a></li>
+        <li><a href="/">主页</a></li>
       
-        <li><a href="/archives">Archives</a></li>
+        <li><a href="/archives">归档</a></li>
       
     </ul>
   </nav>
@@ -129,15 +129,34 @@
   </div>
 </article>
 
-  <script src="https://goodluckforever.github.io/commento/assets/commento.js"></script>
+  <script src="https://commento.now.sh/assets/commento.js"></script>
 <script>
         Commento.init({
-            serverUrl: "https://goodluckforever.github.io"
+            serverUrl: "https://commento.now.sh",
+            honeypot: true
         })
 </script>
 
-    <div id="commento">
-    </div>
+<div id="commento"></div>
+<style>
+ul{
+	    list-style: disc!important;
+}
+h1, h2, h3, h4, h5, h6{
+	font-weight:bold!important;
+	line-height: normal!important;
+
+}
+h3{
+	font-size: 1.17em!important;
+}
+article .article-title{
+	font-size: 2.4rem!important;
+}
+a.active, a:active, a:focus, a:hover{
+	color:#f03838!important;
+}
+</style>	
 
 
 
