@@ -66,9 +66,9 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">主页</a></li>
+        <li><a href="/">Home</a></li>
       
-        <li><a href="/archives">归档</a></li>
+        <li><a href="/archives">Archives</a></li>
       
     </ul>
   </nav>
@@ -152,37 +152,22 @@
   </div>
 </article>
 
-  <script src="https://commento.now.sh/assets/commento.js"></script>
+  {% elseif theme.gitment %}
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
-        Commento.init({
-            serverUrl: "https://commento.now.sh",
-            honeypot: true
-        })
-</script>
-
-<div id="commento"></div>
-<style>
-ul{
-	    list-style: disc!important;
-}
-h1, h2, h3, h4, h5, h6{
-	font-weight:bold!important;
-	line-height: normal!important;
-
-}
-h3{
-	font-size: 1.17em!important;
-}
-article .article-title{
-	font-size: 2.4rem!important;
-}
-a.active, a:active, a:focus, a:hover{
-	color:#f03838!important;
-}
-body{
-	font-family: "Segoe UI", "Lucida Grande", Helvetica, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif!important;
-}
-</style>	
+  var gitment = new Gitment({
+    // 根据文章标题设置唯一评论id
+    id: '{{page.articleId}}',
+    owner: 'yourname',
+    repo: 'your blog github repo',
+    oauth: {
+      client_id: 'your clientid',
+      client_secret: 'your clientsecret',
+    },
+  })
+  gitment.render('comments')
+</script>	
 
 
 
